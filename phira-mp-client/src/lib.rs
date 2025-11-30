@@ -248,7 +248,7 @@ impl Client {
             .rcall(
                 ClientCommand::Authenticate {
                     token: token.into().try_into()?,
-                    game_version: game_version.into(),
+                    game_version: game_version.into().try_into()?,
                 },
                 &self.state.cb_authenticate,
             )
