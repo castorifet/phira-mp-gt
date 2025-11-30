@@ -157,7 +157,10 @@ pub struct JudgeEvent {
 pub enum ClientCommand {
     Ping,
 
-    Authenticate { token: Varchar<32> },
+    Authenticate {
+        token: Varchar<32>,
+        game_version: Varchar<32>,
+    },
     Chat { message: Varchar<200> },
 
     Touches { frames: Arc<Vec<TouchFrame>> },
