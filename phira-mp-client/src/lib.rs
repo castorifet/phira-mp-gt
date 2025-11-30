@@ -243,11 +243,12 @@ impl Client {
     }
 
     #[inline]
-    pub async fn authenticate(&self, token: impl Into<String>) -> Result<()> {
+    pub async fn authenticate(&self, token: impl Into<String>, game_version: impl Into<String>) -> Result<()> {
         let (me, room) = self
             .rcall(
                 ClientCommand::Authenticate {
                     token: token.into().try_into()?,
+                    game_version: game_version.into(),
                 },
                 &self.state.cb_authenticate,
             )
